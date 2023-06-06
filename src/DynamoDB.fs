@@ -58,8 +58,25 @@ type DynamoDB = internal {
     TableName: TableName
 }
 
+type TableNameError =
+    | InvalidName of string
+
 [<RequireQualifiedAccess>]
 module TableName =
+    let parse (tableName: string) =
+        match tableName.Split("--", 2) with
+        | [| instance; sideCar |] ->
+            Create.Instance instance
+            |> Result.mapError (fun _ -> InvalidName tableName)
+            |> Result.map (fun instance -> TableName.InstanceWithSidecar (instance, SidecarSuffix sideCar))
+
+        | [| instance |] ->
+            Create.Instance instance
+            |> Result.mapError (fun _ -> InvalidName tableName)
+            |> Result.map TableName.Instance
+
+        | _ -> Error (InvalidName tableName)
+
     let value = function
         | Instance instance -> instance |> Instance.concat "-"
         | InstanceWithSidecar (instance, SidecarSuffix sideCarSuffix) -> sprintf "%s--%s" (instance |> Instance.concat "-") sideCarSuffix
