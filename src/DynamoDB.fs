@@ -89,6 +89,8 @@ module ItemKey =
 module DynamoDB =
     open Lmc.ErrorHandling
 
+    let tableName ({ TableName = table }: DynamoDB) = table
+
     let private trace name tableName =
         sprintf "[DynamoDB] %s" name
         |> Trace.ChildOf.continueOrStart Trace.Active.current
