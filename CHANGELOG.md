@@ -2,6 +2,8 @@
 
 <!-- There is always Unreleased section on the top. Subsections (Add, Changed, Fix, Removed) should be Add as needed. -->
 ## Unreleased
+
+## 1.2.0 - 2023-06-29
 - Always use `Amazon.RegionEndpoint.EUWest1` in connection
 
 ## 1.1.0 - 2023-06-06
