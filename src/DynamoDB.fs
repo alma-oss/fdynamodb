@@ -130,7 +130,7 @@ module DynamoDB =
         try
             let client: IAmazonDynamoDB =
                 match configuration.Credentials with
-                | AccessKey { Key = key; Secret = secret } -> new AmazonDynamoDBClient(key, secret)
+                | AccessKey { Key = key; Secret = secret } -> new AmazonDynamoDBClient(key, secret, Amazon.RegionEndpoint.EUWest1)
 
             return {
                 DynamoDB = client
