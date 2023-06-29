@@ -2,6 +2,8 @@
 
 <!-- There is always Unreleased section on the top. Subsections (Add, Changed, Fix, Removed) should be Add as needed. -->
 ## Unreleased
+- Fix key casting for `DynamoDB`
+- [**BC**] Change `ItemKey` type
 
 ## 1.2.0 - 2023-06-29
 - Always use `Amazon.RegionEndpoint.EUWest1` in connection

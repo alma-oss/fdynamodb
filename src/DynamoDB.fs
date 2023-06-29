@@ -81,13 +81,17 @@ module TableName =
         | Instance instance -> instance |> Instance.concat "-"
         | InstanceWithSidecar (instance, SidecarSuffix sideCarSuffix) -> sprintf "%s--%s" (instance |> Instance.concat "-") sideCarSuffix
 
-type ItemKey = {
+type HashKey = HashKey of string
+type RangeKey = RangeKey of string
+
+type KeyCombined = {
     HashKey: HashKey
     RangeKey: RangeKey
 }
 
-and HashKey = HashKey of string
-and RangeKey = RangeKey of string
+type ItemKey =
+    | Hash of HashKey
+    | Combined of KeyCombined
 
 [<RequireQualifiedAccess>]
 module HashKey =
@@ -99,8 +103,14 @@ module RangeKey =
 
 [<RequireQualifiedAccess>]
 module ItemKey =
-    let internal toTableKey (key: ItemKey): TableKey =
-        TableKey.Combined(key.HashKey, key.RangeKey)
+    let internal toTableKey: ItemKey -> TableKey = function
+        | Hash hash -> TableKey.Hash(hash |> HashKey.value)
+        | Combined key -> TableKey.Combined(key.HashKey |> HashKey.value,key.RangeKey |> RangeKey.value)
+
+    let internal fromTableKey: TableKey -> ItemKey = fun key ->
+        if key.IsRangeKeySpecified
+        then Combined { HashKey = key.HashKey |> string |> HashKey; RangeKey = key.RangeKey |> string |> RangeKey }
+        else Hash (key.HashKey |> string |> HashKey)
 
 [<RequireQualifiedAccess>]
 module DynamoDB =
@@ -163,17 +173,16 @@ module DynamoDB =
             |> AsyncResult.ofAsyncCatch PutItemError.RuntimeError
             |> AsyncResult.teeError traceError
 
-        return {
-            HashKey = key.HashKey |> string |> HashKey
-            RangeKey = key.RangeKey |> string |> RangeKey
-        }
+        return key |> ItemKey.fromTableKey
     }
 
-    let getItem<'Dto> dynamoDB key = asyncResult {
+    let getItem<'Dto> dynamoDB (key: ItemKey) = asyncResult {
         use trace =
             trace "Get Item" dynamoDB.TableName
             |> Trace.addTags [
-                "db.statement", sprintf "HashKey = %s AND RangeKey = %s" (key.HashKey |> HashKey.value) (key.RangeKey |> RangeKey.value)
+                match key with
+                | Hash hash -> "db.statement", sprintf "HashKey = %s" (hash |> HashKey.value)
+                | Combined key -> "db.statement", sprintf "HashKey = %s AND RangeKey = %s" (key.HashKey |> HashKey.value) (key.RangeKey |> RangeKey.value)
             ]
         let traceError = traceError trace
 
