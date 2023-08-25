@@ -2,6 +2,8 @@
 
 <!-- There is always Unreleased section on the top. Subsections (Add, Changed, Fix, Removed) should be Add as needed. -->
 ## Unreleased
+
+## 3.1.0 - 2023-08-25
 - Add `DynamoDB.scanAllItems` function
 
 ## 3.0.0 - 2023-08-11
