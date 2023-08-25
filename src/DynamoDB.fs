@@ -225,3 +225,31 @@ module DynamoDB =
 
         return items |> List.ofArray
     }
+
+    let scanAllItems<'Dto> dynamoDB = asyncResult {
+        use trace =
+            trace "Get Items" dynamoDB.TableName
+            |> Trace.addTags [ "db.statement", "Scan" ]
+        let traceError = traceError trace
+
+        let! table =
+            dynamoDB
+            |> table<'Dto>
+            |> Result.mapError GetItemError.TableError
+            |> Result.teeError traceError
+
+        trace |> Trace.addEvent "Scan started" |> ignore
+        let! items =
+            table.ScanAsync()
+            |> AsyncResult.ofAsyncCatch GetItemError.RuntimeError
+            |> AsyncResult.teeError traceError
+
+        trace
+        |> Trace.addEvent "Scan finished"
+        |> Trace.addTags [
+            "scan.totalItems", items |> Seq.length |> string
+        ]
+        |> ignore
+
+        return items |> List.ofArray
+    }
