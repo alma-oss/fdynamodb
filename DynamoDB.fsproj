@@ -4,9 +4,9 @@
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <OutputType>Library</OutputType>
-    <PackageId>Lmc.DynamoDB</PackageId>
+    <PackageId>Alma.DynamoDB</PackageId>
     <Version>3.1.0</Version>
-    <RepositoryUrl>https://bitbucket.lmc.cz/projects/ARCHI/repos/fdynamodb/browse</RepositoryUrl>
+    <RepositoryUrl>https://github.com/almacareer/prc-fdynamodb</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>

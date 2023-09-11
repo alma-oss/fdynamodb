@@ -7,14 +7,20 @@ Library for accessing a DynamoDB storage.
 
 Add following into `paket.dependencies`
 ```
-git ssh://git@bitbucket.lmc.cz:7999/archi/nuget-server.git master Packages: /nuget/
+source https://nuget.pkg.github.com/almacareer/index.json username: "%PRIVATE_FEED_USER%" password: "%PRIVATE_FEED_PASS%"
 # LMC Nuget dependencies:
-nuget Lmc.DynamoDB
+nuget Alma.DynamoDB
+```
+
+NOTE: For local development, you have to create ENV variables with your github personal access token.
+```sh
+export PRIVATE_FEED_USER='{GITHUB USERNANME}'
+export PRIVATE_FEED_PASS='{TOKEN}'	# with permissions: read:packages
 ```
 
 Add following into `paket.references`
 ```
-Lmc.DynamoDB
+Alma.DynamoDB
 ```
 
 ## Use
@@ -23,7 +29,7 @@ Lmc.DynamoDB
 > TableName is part of the configuration since it should be paired with specific credentials (and its policies)
 
 ```fs
-open Lmc.DynamoDB
+open Alma.DynamoDB
 
 let configuration = {
     Credentials = AccessKey {
@@ -43,8 +49,8 @@ let dynamoDB = DynamoDB.connect configuration
 
 ### Put item to DynamoDB
 ```fs
-open Lmc.DynamoDB
-open Lmc.ErrorHandling
+open Alma.DynamoDB
+open Alma.ErrorHandling
 
 type ItemDTO = {
     [<Attribute.HashKey>] PrimaryKey: string
@@ -68,7 +74,7 @@ asyncResult {
 
 ### Get item from DynamoDB
 ```fs
-open Lmc.DynamoDB
+open Alma.DynamoDB
 
 asyncResult {
     let! lotrMovie =
@@ -84,7 +90,7 @@ asyncResult {
 
 ### Get items by a hashKey from DynamoDB
 ```fs
-open Lmc.DynamoDB
+open Alma.DynamoDB
 
 asyncResult {
     let! movies =
@@ -99,20 +105,17 @@ asyncResult {
 1. Increment version in `DynamoDB.fsproj`
 2. Update `CHANGELOG.md`
 3. Commit new version and tag it
-4. Run `$ fake build target release`
-5. Go to `nuget-server` repo, run `fake build target copyAll` and push new versions
 
 ## Development
 ### Requirements
 - [dotnet core](https://dotnet.microsoft.com/learn/dotnet/hello-world-tutorial)
-- [FAKE](https://fake.build/fake-gettingstarted.html)
 
 ### Build
 ```bash
-./build.sh
+./build.sh build
 ```
 
-### Watch
+### Tests
 ```bash
-./build.sh -t watch
+./build.sh -t tests
 ```
