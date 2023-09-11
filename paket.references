@@ -1,5 +1,5 @@
 FSharp.Core
 FSharp.AWS.DynamoDB
-Lmc.ErrorHandling
-Lmc.ServiceIdentification
-Lmc.Tracing
+Alma.ErrorHandling
+Alma.ServiceIdentification
+Alma.Tracing

@@ -1,11 +1,11 @@
-namespace Lmc.DynamoDB
+namespace Alma.DynamoDB
 
 open System
 open Amazon.DynamoDBv2
 open FSharp.AWS.DynamoDB
 open FSharp.AWS.DynamoDB.Scripting // Expose non-Async methods, e.g. PutItem/GetItem
-open Lmc.ServiceIdentification
-open Lmc.Tracing
+open Alma.ServiceIdentification
+open Alma.Tracing
 
 //
 // Errors
@@ -114,7 +114,7 @@ module ItemKey =
 
 [<RequireQualifiedAccess>]
 module DynamoDB =
-    open Lmc.ErrorHandling
+    open Alma.ErrorHandling
 
     let tableName ({ TableName = table }: DynamoDB) = table
 
