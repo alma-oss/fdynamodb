@@ -4,6 +4,7 @@ storage: none
 source https://api.nuget.org/v3/index.json
 nuget FSharp.Core ~> 7.0
 nuget FSharp.AWS.DynamoDB 0.11.2-beta
+nuget AWSSDK.SecurityToken ~> 3.7
 
 source https://nuget.pkg.github.com/almacareer/index.json username: "%PRIVATE_FEED_USER%" password: "%PRIVATE_FEED_PASS%"
 # LMC Nuget dependencies:

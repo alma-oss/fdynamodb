@@ -2,6 +2,7 @@
 
 <!-- There is always Unreleased section on the top. Subsections (Add, Changed, Fix, Removed) should be Add as needed. -->
 ## Unreleased
+- Add `AWSSDK.SecurityToken` as it is required for service account connection
 
 ## 4.1.0 - 2023-11-02
 - Add `Credentials.ServiceAccount` case
