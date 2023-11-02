@@ -40,6 +40,7 @@ type AWSAccessKey = {
 }
 
 type Credentials =
+    | ServiceAccount
     | AccessKey of AWSAccessKey
 
 type TableName =
@@ -136,11 +137,13 @@ module DynamoDB =
 
     let connect (configuration: Configuration) = asyncResult {
         use trace = trace "Connect" configuration.TableName
+        let defaultRegion = Amazon.RegionEndpoint.EUWest1
 
         try
             let client: IAmazonDynamoDB =
                 match configuration.Credentials with
-                | AccessKey { Key = key; Secret = secret } -> new AmazonDynamoDBClient(key, secret, Amazon.RegionEndpoint.EUWest1)
+                | ServiceAccount -> new AmazonDynamoDBClient(defaultRegion)
+                | AccessKey { Key = key; Secret = secret } -> new AmazonDynamoDBClient(key, secret, defaultRegion)
 
             return {
                 DynamoDB = client
