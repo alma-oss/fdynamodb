@@ -2,6 +2,8 @@
 
 <!-- There is always Unreleased section on the top. Subsections (Add, Changed, Fix, Removed) should be Add as needed. -->
 ## Unreleased
+- [**BC**] Use net8.0
+- Fix package metadata
 
 ## 4.2.0 - 2023-11-02
 - Add `AWSSDK.SecurityToken` as it is required for service account connection

@@ -2,11 +2,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <OutputType>Library</OutputType>
     <PackageId>Alma.DynamoDB</PackageId>
     <Version>4.2.0</Version>
-    <RepositoryUrl>https://github.com/almacareer/prc-fdynamodb</RepositoryUrl>
+    <RepositoryUrl>https://github.com/almacareer/prc-fdynamodb.git</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/almacareer/prc-fdynamodb</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
