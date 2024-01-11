@@ -18,7 +18,7 @@ NUGET
     Alma.State (8.0.0)
       Alma.ErrorHandling (>= 9.1.1 < 10.0)
       FSharp.Core (>= 8.0.100 < 9.0)
-    Alma.Tracing (9.0.0)
+    Alma.Tracing (10.0.0)
       Alma.ErrorHandling (>= 9.1.1 < 10.0)
       Alma.Logging (>= 9.0 < 10.0)
       Alma.State (>= 8.0 < 9.0)
@@ -33,11 +33,11 @@ NUGET
       OpenTelemetry.Extensions.Propagators (>= 1.7 < 2.0)
       OpenTelemetry.Instrumentation.Http (>= 1.7 < 2.0)
   remote: https://api.nuget.org/v3/index.json
-    AWSSDK.Core (3.7.301.2)
-    AWSSDK.DynamoDBv2 (3.7.300.32)
-      AWSSDK.Core (>= 3.7.301.2 < 4.0)
-    AWSSDK.SecurityToken (3.7.300.33)
-      AWSSDK.Core (>= 3.7.301.2 < 4.0)
+    AWSSDK.Core (3.7.301.3)
+    AWSSDK.DynamoDBv2 (3.7.300.33)
+      AWSSDK.Core (>= 3.7.301.3 < 4.0)
+    AWSSDK.SecurityToken (3.7.300.34)
+      AWSSDK.Core (>= 3.7.301.3 < 4.0)
     DotNet.ReproducibleBuilds (1.1.1)
       Microsoft.SourceLink.AzureRepos.Git (>= 1.1.1)
       Microsoft.SourceLink.Bitbucket.Git (>= 1.1.1)
@@ -358,7 +358,7 @@ NUGET
       System.Security.AccessControl (>= 5.0) - restriction: || (&& (>= monoandroid) (< netstandard1.3)) (&& (< monoandroid) (>= netcoreapp2.0)) (>= monotouch) (&& (< net46) (< netcoreapp2.0) (>= netstandard2.0)) (>= net461) (>= netcoreapp2.1) (>= uap10.1) (>= xamarinios) (>= xamarinmac) (>= xamarintvos) (>= xamarinwatchos)
       System.Security.Principal.Windows (>= 5.0) - restriction: || (&& (>= monoandroid) (< netstandard1.3)) (&& (< monoandroid) (>= netcoreapp2.0)) (>= monotouch) (&& (< net46) (< netcoreapp2.0) (>= netstandard2.0)) (>= net461) (>= netcoreapp2.1) (>= uap10.1) (>= xamarinios) (>= xamarinmac) (>= xamarintvos) (>= xamarinwatchos)
     Mono.Posix.NETStandard (1.0) - restriction: >= netstandard2.0
-    MSBuild.StructuredLogger (2.2.155) - restriction: >= netstandard2.0
+    MSBuild.StructuredLogger (2.2.158) - restriction: >= netstandard2.0
       Microsoft.Build.Framework (>= 17.5) - restriction: >= netstandard2.0
       Microsoft.Build.Utilities.Core (>= 17.5) - restriction: >= netstandard2.0
     Newtonsoft.Json (13.0.3) - restriction: >= netstandard2.0
