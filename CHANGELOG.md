@@ -2,6 +2,8 @@
 
 <!-- There is always Unreleased section on the top. Subsections (Add, Changed, Fix, Removed) should be Add as needed. -->
 ## Unreleased
+
+## 5.1.1 - 2024-05-29
 - Fix `DynamoDB.getItems` to use a key directly in keyCondition expression
 
 ## 5.1.0 - 2024-01-11
