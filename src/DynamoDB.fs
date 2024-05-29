@@ -201,7 +201,9 @@ module DynamoDB =
             |> AsyncResult.teeError traceError
     }
 
-    let getItems<'Dto> dynamoDB itemId (hashKey: HashKey) = asyncResult {
+    /// To get all items with the specified hash key, use following code as query:
+    /// fun table (HashedKey key) -> table.QueryAsync(keyCondition = <@ fun item -> item.Hash = key @>)
+    let getItems<'Dto> dynamoDB (query: TableContext<'Dto> -> HashKey -> Async<'Dto array>) (hashKey: HashKey) = asyncResult {
         let hashKeyValue = hashKey |> HashKey.value
         use trace =
             trace "Get Items" dynamoDB.TableName
@@ -217,7 +219,7 @@ module DynamoDB =
             |> Result.teeError traceError
 
         let! items =
-            table.QueryAsync(keyCondition = <@ fun item -> item |> itemId = hashKeyValue @>)
+            query table hashKey
             |> AsyncResult.ofAsyncCatch GetItemError.RuntimeError
             |> AsyncResult.teeError traceError
 
