@@ -202,10 +202,11 @@ module DynamoDB =
     }
 
     let getItems<'Dto> dynamoDB itemId (hashKey: HashKey) = asyncResult {
+        let hashKeyValue = hashKey |> HashKey.value
         use trace =
             trace "Get Items" dynamoDB.TableName
             |> Trace.addTags [
-                "db.statement", sprintf "HashKey = %s" (hashKey |> HashKey.value)
+                "db.statement", sprintf "HashKey = %s" hashKeyValue
             ]
         let traceError = traceError trace
 
@@ -216,7 +217,7 @@ module DynamoDB =
             |> Result.teeError traceError
 
         let! items =
-            table.QueryAsync(keyCondition = <@ fun item -> item |> itemId = hashKey @>)
+            table.QueryAsync(keyCondition = <@ fun item -> item |> itemId = hashKeyValue @>)
             |> AsyncResult.ofAsyncCatch GetItemError.RuntimeError
             |> AsyncResult.teeError traceError
 
