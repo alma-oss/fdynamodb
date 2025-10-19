@@ -2,6 +2,8 @@
 
 <!-- There is always Unreleased section on the top. Subsections (Add, Changed, Fix, Removed) should be Add as needed. -->
 ## Unreleased
+
+## 6.1.0 - 2025-10-19
 - Add `Checkpoint` module
 
 ## 6.0.0 - 2025-03-17
