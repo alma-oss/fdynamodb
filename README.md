@@ -101,6 +101,65 @@ asyncResult {
 }
 ```
 
+---
+
+## Checkpoint
+
+The `CheckpointStore` module provides a DynamoDB-backed implementation for storing and retrieving checkpoints (such as Kafka consumer checkpoints).
+
+### Setup for Kafka Checkpoints
+
+```fs
+open Alma.DynamoDB
+open Alma.DynamoDB.Checkpoint
+open Alma.Kafka
+open Alma.ServiceIdentification
+open Alma.ErrorHandling
+
+// Configure CheckpointStore with appropriate table and credentials
+let checkpointInstance =
+    Create.Instance (Domain "domain"; Context "compressorCheckpoint"; Purpose "currentTier"; Version "stable")
+    |> fun instance -> InstanceWithSidecar (instance, SidecarSuffix "v1")
+
+let checkpointConfiguration =
+    CheckpointStore.configuration checkpointInstance Credentials.ServiceAccount
+
+let dynamoDB = CheckpointStore.connect checkpointConfiguration
+```
+
+### Implementing GetCheckpoint for Kafka
+
+```fs
+let getCheckpoint (dynamoDB: DynamoDB) (currentApplication: Instance): GetCheckpoint =
+    fun groupId topicPartition -> asyncResult {
+        let consumerInstance = ConsumerInstance (currentApplication |> Instance.concat "-")
+        let! key = Checkpoint.key topicPartition groupId
+        let checkpoint = Checkpoint key
+
+        let! offsetValue = CheckpointStore.retrieveCheckpoint dynamoDB consumerInstance checkpoint
+
+        return {
+            TopicPartition = topicPartition
+            Offset = offsetValue |> Option.map Offset
+        }
+    }
+```
+
+### Storing Checkpoints
+
+```fs
+let storeCheckpoint (dynamoDB: DynamoDB) (currentApplication: Instance) (groupId: GroupId) ({ TopicPartition = topicPartition; Offset = (Offset offset) }: TopicPartitionOffset) =
+    asyncResult {
+        let consumerInstance = ConsumerInstance (currentApplication |> Instance.concat "-")
+        let! key = Checkpoint.key topicPartition groupId
+        let checkpoint = Checkpoint key
+
+        do! CheckpointStore.storeCheckpoint dynamoDB consumerInstance checkpoint offset
+    }
+```
+
+---
+
 ## Release
 1. Increment version in `DynamoDB.fsproj`
 2. Update `CHANGELOG.md`
