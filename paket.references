@@ -1,6 +1,6 @@
 FSharp.Core
 FSharp.AWS.DynamoDB
 AWSSDK.SecurityToken
-Alma.ErrorHandling
+Feather.ErrorHandling
 Alma.ServiceIdentification
 Alma.Tracing

@@ -1,7 +1,7 @@
 namespace Alma.DynamoDB
 
 module Checkpoint =
-    open Alma.ErrorHandling
+    open Feather.ErrorHandling
 
     //
     // Types
