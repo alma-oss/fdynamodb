@@ -6,8 +6,11 @@
     <OutputType>Library</OutputType>
     <PackageId>Alma.DynamoDB</PackageId>
     <Version>6.1.0</Version>
-    <RepositoryUrl>https://github.com/almacareer/prc-fdynamodb.git</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/almacareer/prc-fdynamodb</PackageProjectUrl>
+    <Authors>Almacareer</Authors>
+    <Description>Library for accessing a DynamoDB storage.</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/alma-oss/fdynamodb.git</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/alma-oss/fdynamodb</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

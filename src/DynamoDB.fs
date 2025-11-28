@@ -115,7 +115,7 @@ module ItemKey =
 
 [<RequireQualifiedAccess>]
 module DynamoDB =
-    open Alma.ErrorHandling
+    open Feather.ErrorHandling
 
     let tableName ({ TableName = table }: DynamoDB) = table
 
