@@ -1,5 +1,7 @@
 # AGENTS.md — Alma.DynamoDB (fdynamodb)
 
+This repo ships Agent Skill for the `Alma.DynamoDB` library. Compatible agents discover it automatically; see `.agents/skills/fdynamodb/SKILL.md`.
+
 ## Project Purpose
 
 F# library (`Alma.DynamoDB`) for accessing AWS DynamoDB storage. Provides a typed, traced, and ergonomic API for connecting to DynamoDB tables, putting/getting items, querying by hash key, scanning, and managing Kafka consumer checkpoints backed by DynamoDB. Published as a NuGet package.
