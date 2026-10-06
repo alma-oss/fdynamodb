@@ -1,0 +1,113 @@
+lockfile_version: '1'
+dependencies: []
+deployments:
+- kind: project-relative
+  target: claude
+  value: .claude/skills/fdynamodb
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: null
+- kind: project-relative
+  target: claude
+  value: .claude/skills/fdynamodb/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:15963589faa9e9c09267488f752a91e0f1b368b080a0e4c3290e9a1f560fe185
+- kind: project-relative
+  target: claude
+  value: .claude/skills/fdynamodb/references/anti-patterns.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:60d4dcc8e33225516318d2ea49901614dcb30d424f628af963baa1913ace0fa3
+- kind: project-relative
+  target: claude
+  value: .claude/skills/fdynamodb/references/examples.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:e13b018767e49bb307046cbd0e39de176b68df947ec4160c200d831e4b033422
+- kind: project-relative
+  target: claude
+  value: .claude/skills/fdynamodb/references/preferred-patterns.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:f1ef9ff023922ff943a27cfa9cdca8a0999851d92bf1f31c5ab08387a8807b7c
+- kind: project-relative
+  target: legacy
+  value: .agents/skills/fdynamodb
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: null
+- kind: project-relative
+  target: legacy
+  value: .agents/skills/fdynamodb/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:15963589faa9e9c09267488f752a91e0f1b368b080a0e4c3290e9a1f560fe185
+- kind: project-relative
+  target: legacy
+  value: .agents/skills/fdynamodb/references/anti-patterns.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:60d4dcc8e33225516318d2ea49901614dcb30d424f628af963baa1913ace0fa3
+- kind: project-relative
+  target: legacy
+  value: .agents/skills/fdynamodb/references/examples.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:e13b018767e49bb307046cbd0e39de176b68df947ec4160c200d831e4b033422
+- kind: project-relative
+  target: legacy
+  value: .agents/skills/fdynamodb/references/preferred-patterns.md
+  runtime: null
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:f1ef9ff023922ff943a27cfa9cdca8a0999851d92bf1f31c5ab08387a8807b7c
+local_deployed_files:
+- .agents/skills/fdynamodb
+- .agents/skills/fdynamodb/SKILL.md
+- .agents/skills/fdynamodb/references/anti-patterns.md
+- .agents/skills/fdynamodb/references/examples.md
+- .agents/skills/fdynamodb/references/preferred-patterns.md
+- .claude/skills/fdynamodb
+- .claude/skills/fdynamodb/SKILL.md
+- .claude/skills/fdynamodb/references/anti-patterns.md
+- .claude/skills/fdynamodb/references/examples.md
+- .claude/skills/fdynamodb/references/preferred-patterns.md
+local_deployed_file_hashes:
+  .agents/skills/fdynamodb/SKILL.md: sha256:15963589faa9e9c09267488f752a91e0f1b368b080a0e4c3290e9a1f560fe185
+  .agents/skills/fdynamodb/references/anti-patterns.md: sha256:60d4dcc8e33225516318d2ea49901614dcb30d424f628af963baa1913ace0fa3
+  .agents/skills/fdynamodb/references/examples.md: sha256:e13b018767e49bb307046cbd0e39de176b68df947ec4160c200d831e4b033422
+  .agents/skills/fdynamodb/references/preferred-patterns.md: sha256:f1ef9ff023922ff943a27cfa9cdca8a0999851d92bf1f31c5ab08387a8807b7c
+  .claude/skills/fdynamodb/SKILL.md: sha256:15963589faa9e9c09267488f752a91e0f1b368b080a0e4c3290e9a1f560fe185
+  .claude/skills/fdynamodb/references/anti-patterns.md: sha256:60d4dcc8e33225516318d2ea49901614dcb30d424f628af963baa1913ace0fa3
+  .claude/skills/fdynamodb/references/examples.md: sha256:e13b018767e49bb307046cbd0e39de176b68df947ec4160c200d831e4b033422
+  .claude/skills/fdynamodb/references/preferred-patterns.md: sha256:f1ef9ff023922ff943a27cfa9cdca8a0999851d92bf1f31c5ab08387a8807b7c
