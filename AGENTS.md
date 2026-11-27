@@ -127,7 +127,6 @@ Every DynamoDB operation creates a child trace span with tags: `component`, `pee
 Environment variables for CI:
 - `PRIVATE_FEED_USER` / `PRIVATE_FEED_PASS` — GitHub Packages auth (auto-provided)
 - `NUGET_API_KEY` — NuGet.org publish key (secret)
-- `DOTNET_ROLL_FORWARD=latestMajor` — allows running on newer SDK versions
 
 ## Release Process
 
