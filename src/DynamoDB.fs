@@ -106,7 +106,7 @@ module RangeKey =
 module ItemKey =
     let internal toTableKey: ItemKey -> TableKey = function
         | Hash hash -> TableKey.Hash(hash |> HashKey.value)
-        | Combined key -> TableKey.Combined(key.HashKey |> HashKey.value,key.RangeKey |> RangeKey.value)
+        | Combined key -> TableKey.Combined(key.HashKey |> HashKey.value, key.RangeKey |> RangeKey.value)
 
     let internal fromTableKey: TableKey -> ItemKey = fun key ->
         if key.IsRangeKeySpecified
@@ -203,7 +203,7 @@ module DynamoDB =
 
     /// To get all items with the specified hash key, use following code as query:
     /// fun table (HashedKey key) -> table.QueryAsync(keyCondition = <@ fun item -> item.Hash = key @>)
-    let getItems<'Dto> dynamoDB (query: TableContext<'Dto> -> HashKey -> Async<'Dto array>) (hashKey: HashKey) = asyncResult {
+    let getItems<'Dto> dynamoDB (query: TableContext<'Dto> -> HashKey -> Async<'Dto[]>) (hashKey: HashKey) = asyncResult {
         let hashKeyValue = hashKey |> HashKey.value
         use trace =
             trace "Get Items" dynamoDB.TableName
