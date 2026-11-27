@@ -122,12 +122,11 @@ Every DynamoDB operation creates a child trace span with tags: `component`, `pee
 |---|---|---|
 | `tests.yaml` | PRs + nightly cron (03:00 UTC) | Runs `./build.sh -t tests` on ubuntu-latest with .NET 10.x |
 | `pr-check.yaml` | PRs | Blocks fixup commits + ShellCheck on shell scripts |
-| `publish.yaml` | Git tags matching `[0-9]+.[0-9]+.[0-9]+` | Runs `./build.sh -t publish` with `NUGET_API_KEY` secret |
+| `publish.yaml` | Git tags matching `[0-9]+.[0-9]+.[0-9]+` | Runs `./build.sh -t publish` with a short-lived `NUGET_API_KEY` from NuGet trusted publishing |
 
 Environment variables for CI:
 - `PRIVATE_FEED_USER` / `PRIVATE_FEED_PASS` — GitHub Packages auth (auto-provided)
-- `NUGET_API_KEY` — NuGet.org publish key (secret)
-- `DOTNET_ROLL_FORWARD=latestMajor` — allows running on newer SDK versions
+- `NUGET_API_KEY` — short-lived NuGet.org key issued by `NuGet/login` (trusted publishing); needs the `NUGET_USER` secret
 
 ## Release Process
 
